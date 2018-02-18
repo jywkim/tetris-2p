@@ -119,18 +119,6 @@ function merge(arena, player) {
   });
 }
 
-function playerDrop() {
-  player.pos.y++;
-  if (collide(arena, player)) {
-    player.pos.y--;
-    merge(arena, player);
-    playerReset();
-    arenaSweep();
-    updateScore();
-  }
-  dropCounter = 0;
-}
-
 function playerReset() {
   const pieces = 'ILJOTSZ';
   player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
@@ -173,7 +161,7 @@ function update(time = 0) {
 
   dropCounter += deltaTime;
   if (dropCounter > dropInterval) {
-    playerDrop();
+    player.drop();
   }
 
   draw();
@@ -205,7 +193,7 @@ document.addEventListener('keydown', event => {
   } else if (event.keyCode === 39) {
     player.move(1);
   } else if (event.keyCode === 40) {
-    playerDrop();
+    player.drop();
   } else if (event.keyCode === 81) {
     player.rotate(-1);
   } else if (event.keyCode === 87) {

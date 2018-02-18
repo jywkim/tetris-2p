@@ -5,6 +5,18 @@ class Player {
     this.score = 0;
   }
 
+  drop() {
+    this.pos.y++;
+    if (collide(arena, this)) {
+      this.pos.y--;
+      merge(arena, this);
+      playerReset();
+      arenaSweep();
+      updateScore();
+    }
+    dropCounter = 0;
+  }
+
   move(dir) {
     this.pos.x += dir;
     if (collide(arena, this)) {
