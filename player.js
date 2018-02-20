@@ -13,7 +13,7 @@ class Player {
     if (collide(arena, this)) {
       this.pos.y--;
       merge(arena, this);
-      playerReset();
+      this.reset();
       arenaSweep();
       updateScore();
     }
@@ -24,6 +24,19 @@ class Player {
     this.pos.x += dir;
     if (collide(arena, this)) {
       this.pos.x -= dir;
+    }
+  }
+
+  reset() {
+    const pieces = 'ILJOTSZ';
+    this.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
+    this.pos.y = 0;
+    this.pos.x = (arena[0].length / 2 | 0) -
+                 (this.matrix[0].length / 2 | 0);
+    if (collide(arena, this)) {
+      arena.forEach(row => row.fill(0));
+      this.score = 0;
+      updateScore();
     }
   }
 

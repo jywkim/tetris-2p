@@ -119,19 +119,6 @@ function merge(arena, player) {
   });
 }
 
-function playerReset() {
-  const pieces = 'ILJOTSZ';
-  player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
-  player.pos.y = 0;
-  player.pos.x = (arena[0].length / 2 | 0) -
-                 (player.matrix[0].length / 2 | 0);
-  if (collide(arena, player)) {
-    arena.forEach(row => row.fill(0));
-    player.score = 0;
-    updateScore();
-  }
-}
-
 function rotate(matrix, dir) {
   for (let y = 0; y < matrix.length; ++y) {
     for (let x = 0; x < y; ++x) {
@@ -195,6 +182,6 @@ document.addEventListener('keydown', event => {
   }
 });
 
-playerReset();
+player.reset();
 updateScore();
 update();
