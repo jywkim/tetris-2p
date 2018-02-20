@@ -1,5 +1,8 @@
 class Player {
   constructor() {
+    this.dropCounter = 0;
+    this.dropInterval = 1000;
+
     this.pos = {x: 0, y: 0};
     this.matrix = null;
     this.score = 0;
@@ -14,7 +17,7 @@ class Player {
       arenaSweep();
       updateScore();
     }
-    dropCounter = 0;
+    this.dropCounter = 0;
   }
 
   move(dir) {
@@ -36,6 +39,13 @@ class Player {
         this.pos.x = pos;
         return;
       }
+    }
+  }
+
+  update(deltaTime) {
+    this.dropCounter += deltaTime;
+    if (this.dropCounter > this.dropInterval) {
+      this.drop();
     }
   }
 }

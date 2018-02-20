@@ -151,18 +151,12 @@ function rotate(matrix, dir) {
   }
 }
 
-let dropCounter = 0;
-let dropInterval = 1000;
-
 let lastTime = 0;
 function update(time = 0) {
   const deltaTime = time - lastTime;
   lastTime = time;
 
-  dropCounter += deltaTime;
-  if (dropCounter > dropInterval) {
-    player.drop();
-  }
+  player.update(deltaTime);
 
   draw();
   requestAnimationFrame(update);
