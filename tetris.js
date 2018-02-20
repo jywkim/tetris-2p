@@ -1,6 +1,16 @@
 class Tetris {
   constructor() {
+    let lastTime = 0;
+    const update = (time = 0) => {
+      const deltaTime = time - lastTime;
+      lastTime = time;
 
+      player.update(deltaTime);
+
+      this.draw();
+      requestAnimationFrame(update);
+    }
+    update();
   }
 
   draw() {

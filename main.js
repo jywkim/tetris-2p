@@ -49,17 +49,6 @@ function createPiece(type) {
   }
 }
 
-let lastTime = 0;
-function update(time = 0) {
-  const deltaTime = time - lastTime;
-  lastTime = time;
-
-  player.update(deltaTime);
-
-  tetris.draw();
-  requestAnimationFrame(update);
-}
-
 function updateScore() {
   document.getElementById('score').innerText = player.score;
 }
@@ -75,11 +64,11 @@ const colors = [
   '#3877FF',
 ];
 
-const tetris = new Tetris;
-
 const arena = new Arena(12, 20);
 
 const player = new Player;
+
+const tetris = new Tetris;
 
 document.addEventListener('keydown', event => {
   if (event.keyCode === 37) {
@@ -95,6 +84,4 @@ document.addEventListener('keydown', event => {
   }
 });
 
-player.reset();
 updateScore();
-update();
