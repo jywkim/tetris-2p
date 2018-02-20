@@ -49,27 +49,6 @@ function createPiece(type) {
   }
 }
 
-function draw() {
-  context.fillStyle = '#000';
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  drawMatrix(arena.matrix, {x:0, y: 0});
-  drawMatrix(player.matrix, player.pos);
-}
-
-function drawMatrix(matrix, offset) {
-  matrix.forEach((row, y) => {
-    row.forEach((value, x) => {
-      if (value !== 0) {
-        context.fillStyle = colors[value];
-        context.fillRect(x + offset.x,
-                         y + offset.y,
-                         1, 1);
-      }
-    });
-  });
-}
-
 let lastTime = 0;
 function update(time = 0) {
   const deltaTime = time - lastTime;
@@ -77,7 +56,7 @@ function update(time = 0) {
 
   player.update(deltaTime);
 
-  draw();
+  tetris.draw();
   requestAnimationFrame(update);
 }
 
@@ -95,6 +74,8 @@ const colors = [
   '#FFE138',
   '#3877FF',
 ];
+
+const tetris = new Tetris;
 
 const arena = new Arena(12, 20);
 
