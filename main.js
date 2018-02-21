@@ -54,8 +54,8 @@ const playerElements = document.querySelectorAll('.player');
 
 const keyListener = (event) => {
   [
-    [65, 68, 81, 69, 83],
-    [72, 75, 89, 73, 74],
+    [65, 68, 87, 83],
+    [72, 75, 85, 74],
   ].forEach((key, index) => {
     const player = tetri[index].player;
     if (event.type === 'keydown') {
@@ -64,13 +64,11 @@ const keyListener = (event) => {
       } else if (event.keyCode === key[1]) {
         player.move(1);
       } else if (event.keyCode === key[2]) {
-        player.rotate(-1);
-      } else if (event.keyCode === key[3]) {
         player.rotate(1);
       }
     }
 
-    if (event.keyCode === key[4]) {
+    if (event.keyCode === key[3]) {
       if (event.type === 'keydown') {
         if (player.dropInterval !== player.DROP_FAST) {
           player.drop();
