@@ -1,5 +1,16 @@
 class Tetris {
   constructor() {
+    this.colors = [
+      null,
+      '#FF0D72',
+      '#0DC2FF',
+      '#0DFF72',
+      '#F538FF',
+      '#FF8E0D',
+      '#FFE138',
+      '#3877FF',
+    ];
+
     let lastTime = 0;
     const update = (time = 0) => {
       const deltaTime = time - lastTime;
@@ -25,7 +36,7 @@ class Tetris {
     matrix.forEach((row, y) => {
       row.forEach((value, x) => {
         if (value !== 0) {
-          context.fillStyle = colors[value];
+          context.fillStyle = this.colors[value];
           context.fillRect(x + offset.x,
                            y + offset.y,
                            1, 1);
