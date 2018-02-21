@@ -48,23 +48,28 @@ function updateScore() {
   document.getElementById('score').innerText = tetris.player.score;
 }
 
-const canvas = document.getElementById('tetris');
+const tetri = [];
 
-const tetris = new Tetris(canvas);
-
-document.addEventListener('keydown', event => {
-  const player = tetris.player;
-  if (event.keyCode === 37) {
-    player.move(-1);
-  } else if (event.keyCode === 39) {
-    player.move(1);
-  } else if (event.keyCode === 40) {
-    player.drop();
-  } else if (event.keyCode === 81) {
-    player.rotate(-1);
-  } else if (event.keyCode === 87) {
-    player.rotate(1);
-  }
+const playerElements = document.querySelectorAll('.player');
+[...playerElements].forEach(element => {
+  const canvas = element.querySelector('canvas');
+  const tetris = new Tetris(canvas);
+  tetri.push(tetris);
 });
 
-updateScore();
+// document.addEventListener('keydown', event => {
+//   const player = tetris.player;
+//   if (event.keyCode === 37) {
+//     player.move(-1);
+//   } else if (event.keyCode === 39) {
+//     player.move(1);
+//   } else if (event.keyCode === 40) {
+//     player.drop();
+//   } else if (event.keyCode === 81) {
+//     player.rotate(-1);
+//   } else if (event.keyCode === 87) {
+//     player.rotate(1);
+//   }
+// });
+//
+// updateScore();
