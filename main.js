@@ -45,18 +45,15 @@ function createPiece(type) {
 }
 
 function updateScore() {
-  document.getElementById('score').innerText = player.score;
+  document.getElementById('score').innerText = tetris.player.score;
 }
-
-const arena = new Arena(12, 20);
-
-const player = new Player;
 
 const canvas = document.getElementById('tetris');
 
 const tetris = new Tetris(canvas);
 
 document.addEventListener('keydown', event => {
+  const player = tetris.player;
   if (event.keyCode === 37) {
     player.move(-1);
   } else if (event.keyCode === 39) {

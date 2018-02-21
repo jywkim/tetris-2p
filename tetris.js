@@ -4,6 +4,9 @@ class Tetris {
     this.context = canvas.getContext('2d');
     this.context.scale(20, 20)
 
+    this.arena = new Arena(12, 20);
+    this.player = new Player(this);
+
     this.colors = [
       null,
       '#FF0D72',
@@ -20,7 +23,7 @@ class Tetris {
       const deltaTime = time - lastTime;
       lastTime = time;
 
-      player.update(deltaTime);
+      this.player.update(deltaTime);
 
       this.draw();
       requestAnimationFrame(update);
@@ -32,8 +35,8 @@ class Tetris {
     this.context.fillStyle = '#000';
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.drawMatrix(arena.matrix, {x:0, y: 0});
-    this.drawMatrix(player.matrix, player.pos);
+    this.drawMatrix(this.arena.matrix, {x:0, y: 0});
+    this.drawMatrix(this.player.matrix, this.player.pos);
   }
 
   drawMatrix(matrix, offset) {
