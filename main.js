@@ -57,19 +57,19 @@ const playerElements = document.querySelectorAll('.player');
   tetri.push(tetris);
 });
 
-// document.addEventListener('keydown', event => {
-//   const player = tetris.player;
-//   if (event.keyCode === 37) {
-//     player.move(-1);
-//   } else if (event.keyCode === 39) {
-//     player.move(1);
-//   } else if (event.keyCode === 40) {
-//     player.drop();
-//   } else if (event.keyCode === 81) {
-//     player.rotate(-1);
-//   } else if (event.keyCode === 87) {
-//     player.rotate(1);
-//   }
-// });
-//
-// updateScore();
+document.addEventListener('keydown', event => {
+  const player = tetri[0].player;
+  if (event.keyCode === 37) {
+    player.move(-1);
+  } else if (event.keyCode === 39) {
+    player.move(1);
+  } else if (event.keyCode === 40) {
+    player.drop();
+  } else if (event.keyCode === 81) {
+    player.rotate(-1);
+  } else if (event.keyCode === 87) {
+    player.rotate(1);
+  }
+});
+
+updateScore();
