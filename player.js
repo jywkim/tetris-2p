@@ -1,10 +1,13 @@
 class Player {
   constructor(tetris) {
+    this.DROP_SLOW = 1000;
+    this.DROP_FAST = 50;
+
     this.tetris = tetris;
     this.arena = tetris.arena;
 
     this.dropCounter = 0;
-    this.dropInterval = 1000;
+    this.dropInterval = this.DROP_SLOW;
 
     this.pos = {x: 0, y: 0};
     this.matrix = null;
