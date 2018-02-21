@@ -1,8 +1,3 @@
-const canvas = document.getElementById('tetris');
-const context = canvas.getContext('2d');
-
-context.scale(20, 20)
-
 function createPiece(type) {
   if (type === 'T') {
     return [
@@ -57,7 +52,9 @@ const arena = new Arena(12, 20);
 
 const player = new Player;
 
-const tetris = new Tetris;
+const canvas = document.getElementById('tetris');
+
+const tetris = new Tetris(canvas);
 
 document.addEventListener('keydown', event => {
   if (event.keyCode === 37) {
