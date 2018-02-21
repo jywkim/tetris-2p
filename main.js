@@ -58,18 +58,22 @@ const playerElements = document.querySelectorAll('.player');
 });
 
 document.addEventListener('keydown', event => {
-  const player = tetri[0].player;
-  if (event.keyCode === 37) {
-    player.move(-1);
-  } else if (event.keyCode === 39) {
-    player.move(1);
-  } else if (event.keyCode === 40) {
-    player.drop();
-  } else if (event.keyCode === 81) {
-    player.rotate(-1);
-  } else if (event.keyCode === 87) {
-    player.rotate(1);
-  }
+  [
+    [37, 39, 81, 87, 40],
+  ].forEach((key, index) => {
+    const player = tetri[index].player;
+    if (event.keyCode === key[0]) {
+      player.move(-1);
+    } else if (event.keyCode === key[1]) {
+      player.move(1);
+    } else if (event.keyCode === key[2]) {
+      player.rotate(-1);
+    } else if (event.keyCode === key[3]) {
+      player.rotate(1);
+    } else if (event.keyCode === key[4]) {
+      player.drop();
+    }
+  });
 });
 
 updateScore();
